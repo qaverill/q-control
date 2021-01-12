@@ -15,7 +15,8 @@ export default {
   black,
   dark,
   white,
-  color1: orange,
+  color1: purple,
   color2: aqua,
+  color3: orange,
   random,
 };
