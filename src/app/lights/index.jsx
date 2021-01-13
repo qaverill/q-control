@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import colors from '@q/colors';
+import { getLights } from './api';
 
 const Border = styled.div`
   background-color: ${colors.dark};
@@ -10,6 +11,14 @@ const Border = styled.div`
 `;
 
 export default function Lights() {
+  const [lights, setLights] = React.useState(null);
+  React.useEffect(() => {
+    async function fetchLights() {
+      setLights(await getLights());
+    }
+    fetchLights();
+  }, []);
+  console.log(lights)
   return (
     <Border>
       Lights
