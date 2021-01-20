@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import ReactTooltip from 'react-tooltip';
 import App from './app';
 
 const RootContainer = styled.div`
@@ -11,6 +12,7 @@ const RootContainer = styled.div`
 
 const Root = () => (
   <RootContainer>
+    <ReactTooltip />
     <App />
   </RootContainer>
 );

@@ -18,6 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'import/no-unresolved': [2, { ignore: ['@q'] }]
   },
   settings: {
     'import/resolver': {

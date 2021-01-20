@@ -7,6 +7,7 @@ export const getLights = async () => {
   return data;
 };
 
-export const putLights = async (preset) => {
-  await axios.put(PATH, { preset });
+export const putLights = async ({ preset, brightness }) => {
+  const payload = brightness ? { brightness } : { preset };
+  await axios.put(PATH, payload);
 };
