@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { dark, color2 } from '@q/colors';
+import { dark, aqua } from '@q/colors';
+import { io } from 'socket.io-client';
 import { getLights, putLights } from './api';
 import PresetControllers from './components/PresetControllers';
 import BrightnessControllers from './components/BrightnessController';
@@ -13,26 +14,30 @@ const LightControls = styled.div`
   padding: 20px;
   display: flex;
   background-color: ${dark};
-  border: 5px solid ${color2};
+  border: 5px solid ${aqua};
   border-radius: 15px 15px 15px 15px;
   margin: 15px;
 `;
 // ----------------------------------
 // HELPERS
 // ----------------------------------
+const socket = io('http://localhost:4040');
 // ----------------------------------
 // COMPONENTS
 // ----------------------------------
 export default function Lights() {
   const [currentPreset, setCurrentPreset] = React.useState(null);
   const [currentBrightness, setCurrentBrightness] = React.useState(null);
+  function setState(lights) {
+    setCurrentPreset(lights[0].preset);
+    setCurrentBrightness(lights[0].brightness);
+  }
   React.useEffect(() => {
     async function fetchLightPreset() {
-      const lights = await getLights();
-      setCurrentPreset(lights[0].preset);
-      setCurrentBrightness(lights[0].brightness);
+      setState(await getLights());
     }
     fetchLightPreset();
+    socket.on('/lifx', setState);
   }, []);
   async function setLightsPreset(preset) {
     setCurrentPreset(preset);

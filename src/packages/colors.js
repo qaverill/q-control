@@ -9,8 +9,5 @@ export const red = '#C5283D';
 export const purple = '#541DB9';
 export const orange = '#B9541D';
 export const aqua = '#3BA99C';
+export const gold = '#DAA520';
 export const random = () => `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-export const color1 = purple;
-export const color2 = aqua;
-export const color3 = orange;
