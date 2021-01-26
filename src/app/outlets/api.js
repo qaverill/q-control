@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PATH = '/api/kasa';
+const PATH = '/api/control/kasa';
 
 export const getOutlets = async () => {
   const { data } = await axios.get(PATH);
