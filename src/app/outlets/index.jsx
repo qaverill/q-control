@@ -33,7 +33,7 @@ export default function Outlets() {
 
   return (
     <OutletControls>
-      { outlets && <PowerControllers outlets={outlets} /> }
+      <PowerControllers outlets={outlets} />
     </OutletControls>
   );
 }

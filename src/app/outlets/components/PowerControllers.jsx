@@ -24,9 +24,11 @@ const OutletToggle = styled(Toggle)`
 // ----------------------------------
 const determineStates = (outlets) => {
   const states = {};
-  outlets.forEach((outlet) => {
-    states[outlet.alias] = outlet.on_time > 0;
-  });
+  if (outlets) {
+    outlets.forEach((outlet) => {
+      states[outlet.alias] = outlet.on_time > 0;
+    });
+  }
   return states;
 };
 // ----------------------------------
@@ -40,14 +42,14 @@ export default function PowerControllers(props) {
   }
   return (
     <Controllers>
-      {R.keys(states).map((outlet) => (
+      {Object.entries(backgrounds).map(([outlet, background]) => (
         <OutletToggle
           key={outlet}
           data-tip={outlet}
+          background={background}
           color={pink}
           isActive={states[outlet]}
           onClick={() => setOutletState(outlet)}
-          background={backgrounds[outlet]}
         />
       ))}
     </Controllers>

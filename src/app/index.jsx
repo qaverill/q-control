@@ -14,10 +14,10 @@ const Border = styled(Container)`
   flex-direction: column;
   height: 100%;
 `;
-const BottomHalf = styled.div`
+const TopHalf = styled.div`
   display: flex;
   flex-grow: 2;
-  margin-top: 15px;
+  margin-bottom: 15px;
 `;
 // ----------------------------------
 // COMPONENTS
@@ -25,12 +25,12 @@ const BottomHalf = styled.div`
 export default function App() {
   return (
     <Border>
-      <Lights />
-      <BottomHalf>
+      <TopHalf>
         <TopArtist />
         <Outlets />
         <TopAlbum />
-      </BottomHalf>
+      </TopHalf>
+      <Lights />
     </Border>
   );
 }
