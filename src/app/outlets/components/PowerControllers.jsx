@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
+import { pink } from '@q/colors';
+import { Toggle } from '@q/styles';
 import backgrounds from '../outlets';
 import { putOutlet } from '../api';
 // ----------------------------------
@@ -10,21 +12,12 @@ import { putOutlet } from '../api';
 const Controllers = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+  flex-grow: 1;
 `;
-const OutletToggle = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 1;
-  font-size: 200px;
-  cursor: pointer;
-  border-radius: 50%;
-  border: 5px solid ${(props) => (props.isActive ? 'white' : 'black')};
-  height: 250px;
-  width: 250px;
-  background: ${(props) => backgrounds[props['data-tip']]};
+const OutletToggle = styled(Toggle)`
+  :nth-child(n + 2) {
+    margin-top: 15px;
+  }
 `;
 // ----------------------------------
 // HELPERS
@@ -51,8 +44,10 @@ export default function PowerControllers(props) {
         <OutletToggle
           key={outlet}
           data-tip={outlet}
+          color={pink}
           isActive={states[outlet]}
           onClick={() => setOutletState(outlet)}
+          background={backgrounds[outlet]}
         />
       ))}
     </Controllers>

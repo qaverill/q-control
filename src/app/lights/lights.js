@@ -6,8 +6,8 @@ const warm = '#FFE6CC';
 const black = '#000000';
 
 export default {
-  technicolor: [green, purple, blue, yellow],
-  default: [warm, warm, warm, warm],
   off: [black, black, black, black],
+  technicolor: [green, purple, blue, yellow],
   random: 'unknown',
+  default: [warm, warm, warm, warm],
 };

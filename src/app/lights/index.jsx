@@ -1,22 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { dark, aqua } from '@q/colors';
+import { green } from '@q/colors';
 import { io } from 'socket.io-client';
+import { Container } from '@q/styles';
 import { getLights, putLights } from './api';
 import PresetControllers from './components/PresetControllers';
 import BrightnessControllers from './components/BrightnessController';
 // ----------------------------------
 // STYLES
 // ----------------------------------
-const LightControls = styled.div`
+const LightControls = styled(Container)`
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  display: flex;
-  background-color: ${dark};
-  border: 5px solid ${aqua};
-  border-radius: 15px 15px 15px 15px;
-  margin: 15px;
+  border-color: ${green};
+  flex-grow: 1;
 `;
 // ----------------------------------
 // HELPERS
@@ -27,7 +24,7 @@ const socket = io('http://localhost:4040');
 // ----------------------------------
 export default function Lights() {
   const [currentPreset, setCurrentPreset] = React.useState(null);
-  const [currentBrightness, setCurrentBrightness] = React.useState(null);
+  const [currentBrightness, setCurrentBrightness] = React.useState(100);
   function setState(lights) {
     setCurrentPreset(lights[0].preset);
     setCurrentBrightness(lights[0].brightness);
@@ -53,12 +50,10 @@ export default function Lights() {
         currentPreset={currentPreset}
         setLightsPreset={setLightsPreset}
       />
-      {currentBrightness && (
-        <BrightnessControllers
-          currentBrightness={currentBrightness}
-          setLightsBrightness={setLightsBrightness}
-        />
-      )}
+      <BrightnessControllers
+        currentBrightness={currentBrightness}
+        setLightsBrightness={setLightsBrightness}
+      />
     </LightControls>
   );
 }

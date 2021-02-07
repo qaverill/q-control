@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { dark, orange } from '@q/colors';
+import { pink } from '@q/colors';
 import { io } from 'socket.io-client';
+import { Container } from '@q/styles';
 import { getOutlets } from './api';
 import PowerControllers from './components/PowerControllers';
 // ----------------------------------
@@ -11,11 +12,11 @@ const socket = io('http://localhost:4040');
 // ----------------------------------
 // STYLES
 // ----------------------------------
-const Border = styled.div`
-  background-color: ${dark};
-  border: 5px solid ${orange};
-  border-radius: 15px 15px 15px 15px;
-  margin: 15px;
+const OutletControls = styled(Container)`
+  border-color: ${pink};
+  display: flex;
+  flex-grow: 1;
+  margin: 0 15px;
 `;
 // ----------------------------------
 // COMPONENTS
@@ -31,8 +32,8 @@ export default function Outlets() {
   }, []);
 
   return (
-    <Border>
+    <OutletControls>
       { outlets && <PowerControllers outlets={outlets} /> }
-    </Border>
+    </OutletControls>
   );
 }

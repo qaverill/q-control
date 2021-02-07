@@ -1,17 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import { dark, purple } from '@q/colors';
+import { purple } from '@q/colors';
+import { Container } from '@q/styles';
 import Lights from './lights';
 import Outlets from './outlets';
+import { TopAlbum, TopArtist } from './music';
 // ----------------------------------
 // STYLES
 // ----------------------------------
-const Border = styled.div`
+const Border = styled(Container)`
+  border-color: ${purple};
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  background-color: ${dark};
-  border: 5px solid ${purple};
-  border-radius: 15px 15px 15px 15px;
-  margin: 15px;
+`;
+const BottomHalf = styled.div`
+  display: flex;
+  flex-grow: 2;
+  margin-top: 15px;
 `;
 // ----------------------------------
 // COMPONENTS
@@ -20,7 +26,11 @@ export default function App() {
   return (
     <Border>
       <Lights />
-      <Outlets />
+      <BottomHalf>
+        <TopArtist />
+        <Outlets />
+        <TopAlbum />
+      </BottomHalf>
     </Border>
   );
 }
