@@ -34,7 +34,7 @@ export default function Lights() {
       setState(await getLights());
     }
     fetchLightPreset();
-    socket.on('/lifx', setState);
+    socket.on('/lights', setState);
   }, []);
   async function setLightsPreset(preset) {
     setCurrentPreset(preset);

@@ -28,7 +28,7 @@ export default function Outlets() {
       setOutlets(await getOutlets());
     }
     fetchOutlets();
-    socket.on('/kasa', setOutlets);
+    socket.on('/outlets', setOutlets);
   }, []);
 
   return (

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const PATH = '/api/control/lifx';
+const PATH = '/api/control/lights';
 
 export const getLights = async () => {
   const { data } = await axios.get(PATH);
