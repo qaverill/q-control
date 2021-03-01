@@ -60,19 +60,18 @@ const RootDimmer = styled.div`
 // ----------------------------------
 export default function BrightnessController(props) {
   const { currentBrightness, setLightsBrightness } = props;
-  const [value, setValue] = React.useState(currentBrightness * 100);
-  React.useEffect(() => ReactTooltip.rebuild(), [value]);
+  React.useEffect(() => ReactTooltip.rebuild(), [currentBrightness]);
   return (
-    <Bar data-tip={`${value}%`}>
+    <Bar data-tip={`${currentBrightness * 100}%`}>
       <Slider
         type="range"
         min="1"
         max="100"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={currentBrightness * 100}
+        onChange={(e) => setLightsBrightness(e.target.value / 100)}
         onMouseUp={(e) => setLightsBrightness(e.target.value / 100)}
       />
-      <RootDimmer brightness={0.50 - (value / 100)} />
+      <RootDimmer brightness={0.80 - (currentBrightness)} />
     </Bar>
   );
 }

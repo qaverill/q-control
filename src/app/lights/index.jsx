@@ -39,6 +39,7 @@ export default function Lights() {
   async function setLightsPreset(preset) {
     setCurrentPreset(preset);
     await putLights({ preset });
+    setState(await getLights());
   }
   async function setLightsBrightness(brightness) {
     setCurrentBrightness(brightness);
