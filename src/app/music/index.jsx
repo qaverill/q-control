@@ -30,7 +30,7 @@ export function TopArtist() {
 export function TopAlbum() {
   return (
     <MusicContainer>
-      <AlbumCover url="https://i.scdn.co/image/ab67616d0000b27302c2d57466ec7244d744e70c" />
+      <AlbumCover url="https://i.scdn.co/image/ab67616d00001e02a3c8fa22296801ed0a955d38" />
     </MusicContainer>
   );
 }

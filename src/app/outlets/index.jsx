@@ -21,7 +21,7 @@ const OutletControls = styled(Container)`
 // ----------------------------------
 // COMPONENTS
 // ----------------------------------
-export default function Outlets() {
+const Outlets = () => {
   const [outlets, setOutlets] = React.useState(null);
   React.useEffect(() => {
     async function fetchOutlets() {
@@ -37,3 +37,5 @@ export default function Outlets() {
     </OutletControls>
   );
 }
+
+export default Outlets;

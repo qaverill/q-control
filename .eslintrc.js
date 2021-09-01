@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'import/no-unresolved': [2, { ignore: ['@q'] }],
     'react/forbid-prop-types': 0,
+    'react/prop-types': 0,
   },
   settings: {
     'import/resolver': {

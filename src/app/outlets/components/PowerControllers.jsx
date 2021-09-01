@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import * as R from 'ramda';
 import { pink } from '@q/colors';
 import { Toggle } from '@q/styles';
 import backgrounds from '../outlets';
@@ -34,7 +32,7 @@ const determineStates = (outlets) => {
 // ----------------------------------
 // COMPONENTS
 // ----------------------------------
-export default function PowerControllers(props) {
+const PowerControllers = (props) => {
   const { outlets } = props;
   const states = determineStates(outlets);
   async function setOutletState(outlet) {
@@ -54,7 +52,6 @@ export default function PowerControllers(props) {
       ))}
     </Controllers>
   );
-}
-PowerControllers.propTypes = {
-  outlets: PropTypes.array.isRequired,
 };
+
+export default PowerControllers;
